@@ -64,3 +64,28 @@ function memoize(fn) {
   }
   
 }
+
+
+Q3. Binary search Algo
+function fun(){
+    let arr = [1, 2, 3, 4, 5, 7, 9, 44, 45, 78]
+
+    let num = 45;
+    let left = 0;
+    let right = arr.length - 1;
+
+    while (left <= right) {
+        let mid = Math.floor(right - left / 2);
+        if (arr[mid] == num) {
+            return mid
+        }
+        if (num < arr[mid]) {
+            right = mid - 1;
+        }
+        else {
+            left = mid + 1;
+        }
+    }
+}
+
+console.log(fun())
