@@ -89,3 +89,32 @@ function fun(){
 }
 
 console.log(fun())
+
+Q4. Given an integer array nums, find the subarray with the largest sum, and return its sum.
+    leetcode.com/problems/maximum-subarray/description/
+Example 1:
+Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
+Output: 6
+Explanation: The subarray [4,-1,2,1] has the largest sum 6.
+
+
+    var maxSubArray = function(nums) {
+    let res = 0;
+    let total = 0;
+    for (let i = 0; i < nums.length; i++) {
+        if(i==0){
+            res = nums[0];
+            total = nums[0];
+        }else{
+            if(total<0){
+                total = 0
+            }
+            total = total + nums[i];
+            res = Math.max(res, total)
+        }
+
+    }
+    return res
+}
+console.log(maxSubArray([-1,-2]))
+console.log(maxSubArray([8,-19,5,-4,20]))
