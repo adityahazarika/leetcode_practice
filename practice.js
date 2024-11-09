@@ -146,3 +146,43 @@ var searchMatrix = function(matrix, target) {
 };
 
 console.log(searchMatrix(matrix,12))
+
+
+Q6. Given an array nums of distinct integers, return all the possible permutations. You can return the answer in any order.
+    
+    function permute(nums) {
+    if(nums.length==1){
+        return nums;
+    }
+    else if(nums.length==2){
+        return [[nums[0],nums[1]],[nums[1],nums[0]]]
+    }
+
+    return nums.flatMap((n)=>{
+        return permute(nums.filter(it=>(n!==it))).map((d)=>[n,...d])
+    })
+}
+
+Efficient Solution - 
+function permute(nums) {
+    if (nums.length == 1) {
+        return [nums];
+    }
+    let res = [];
+    for (let i = 0; i < nums.length; i++) {
+        let n = nums.shift();
+        let perm = permute(nums.slice());
+
+        for (const p of perm) {
+            p.push(n);
+        }
+
+        res.push(...perm)
+        nums.push(n);
+    }
+    return res;
+}
+
+console.log(
+    permute([1, 2, 3])
+)
