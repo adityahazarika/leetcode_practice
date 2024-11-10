@@ -186,3 +186,83 @@ function permute(nums) {
 console.log(
     permute([1, 2, 3])
 )
+
+
+
+Q7 There is an integer array nums sorted in ascending order (with distinct values).
+
+Prior to being passed to your function, nums is possibly rotated at an unknown pivot index k (1 <= k < nums.length) such that the resulting array is [nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]] (0-indexed). For example, [0,1,2,4,5,6,7] might be rotated at pivot index 3 and become [4,5,6,7,0,1,2].
+
+Given the array nums after the possible rotation and an integer target, return the index of target if it is in nums, or -1 if it is not in nums.
+
+You must write an algorithm with O(log n) runtime complexity.
+
+Input: nums = [4,5,6,7,0,1,2], target = 0
+Output: 4
+
+link- https://leetcode.com/problems/search-in-rotated-sorted-array/description/
+
+Answer 1 My solution
+function search(nums,target){
+    let i = nums.findIndex((n,i)=>n>nums[i+1]);
+    if(target<=nums[i]&&target>=nums[0]){
+        let n = [...nums].slice(0,(i+1))
+        return fun(n,target,0);
+    }else{
+        let n = [...nums].slice(i+1,nums.length)
+        return fun(n,target,(nums.length-n.length))
+    }
+    function fun(arr,trg,order){
+        let left = 0;
+        let right = arr.length-1;
+        while(left<=right){
+            let mid = Math.floor((left+right)/2);
+            if(arr[mid]==trg){
+                return (order==0)?mid:(mid+order)
+            }
+            if(arr[mid]>trg){
+                right = mid-1
+            }
+            else{
+                left = mid+1
+            }
+        }
+        return -1
+    }
+}
+
+console.log(search([5,1,3],5))
+
+
+Alternative efficient solution - 
+
+    // the Login is for example [4,5,6,7,1,2,3] we just need to watch out for the 7,1 index. Before 7 same Binary search algo will apply and after 7 same algo will apply, just need to take care of this 7,1 position
+    function search(nums, trgt){
+    let left = 0;
+    let right = nums.length-1;
+    while(left<=right){
+        let mid = Math.floor((left+right)/2);
+        if(nums[mid]===trgt){
+            return mid;
+        }
+        if(nums[mid]>=nums[left]){
+            if(trgt>=nums[left]&&trgt<nums[mid]){
+                right = mid-1;
+            }else{
+                left = mid+1
+            }
+        }
+        else{
+            if(trgt>nums[mid]&&trgt<=nums[right])
+            {
+                left = mid+1;
+            }
+            else{
+                right = mid-1
+            }
+        }
+    }
+    return -1
+}
+
+console.log(search([5,1,3],1))
