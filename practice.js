@@ -266,3 +266,24 @@ Alternative efficient solution -
 }
 
 console.log(search([5,1,3],1))
+
+Q8 Arrage array in ascending order - 
+    let arr = [6,5,1,4,3,2,1,2];
+
+let max = 0;
+
+for (let i = 0; i < arr.length; i++) {
+    let j = i + 1
+    while (j < arr.length) {
+        if (arr[i] < arr[j]) {
+            j=j+1
+        }else{
+            arr[i]=arr[j]+arr[i];
+            arr[j]=arr[i]-arr[j];
+            arr[i]=arr[i]-arr[j];
+            j=j+1;
+        }
+    }
+}
+
+console.log(arr)
