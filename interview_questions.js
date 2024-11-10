@@ -325,3 +325,22 @@ console.log(arr)
 
 
 console.log(arr)
+
+
+Q9 Find the 2nd largest number in an array 
+let arr = [1,4,5,6,9];
+
+let max = 0;
+let max2 = 0;
+
+for (let i = 0; i < arr.length; i++) {
+    if(arr[i]>max){
+        max2 = max;
+        max = arr[i];
+    }else if(arr[i]>max2){
+        max2 = arr[i]
+    }
+
+}
+
+console.log(max,max2)
