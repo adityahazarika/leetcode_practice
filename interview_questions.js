@@ -67,7 +67,27 @@ for(let i=0;i<arr.length;i++){
 }
 
 console.log(obj)
+// a more simple solution
+var arr =[11,12,15,2,4];
+// [9,8,1,2,3,4,5]
+let min = 0;
+let pro = 0;
 
+for (let i = 0; i < arr.length; i++) {
+    if (i == 0) {
+        min = arr[i];
+        continue;
+    };
+    if (arr[i] < min) {
+        min = arr[i];
+        continue;
+    }
+    if((arr[i]-min)>pro){
+        pro=arr[i]-min
+    }
+
+}
+console.log(min,pro)
 
 Q7
 let arr = ["php-1", "php-3", "php-2", "node-3", "node-1", "php-7", "python-2"]
