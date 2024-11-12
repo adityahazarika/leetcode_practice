@@ -287,3 +287,32 @@ for (let i = 0; i < arr.length; i++) {
 }
 
 console.log(arr)
+
+Q9 Given the head of a singly linked list, reverse the list, and return the reversed list.
+
+My solution - 
+    var reverseList = function (obj) {
+    let head = obj;
+    while (obj?.next) {
+        let prev = obj;
+        let post = obj.next
+        prev.next = post.next;
+        post.next = head;
+        head = post;
+        obj = prev;
+    }
+    return head
+};
+
+leetcode solution, although i have already thought this solution but i don't know hot to code it
+    var reverseList = function (obj) {
+    let prev = null;
+    while(obj){
+        let curr = obj;
+        let next = obj.next;
+        curr.next = prev;
+        obj = next
+        prev = curr;
+    }
+    return prev;
+};
