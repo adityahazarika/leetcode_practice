@@ -350,3 +350,47 @@ function decodeString(s){
     }
     return stk.join("")
 }
+
+
+Q11. Given a string and an integer k, find the number of substrings in which all the different characters occur exactly k times.
+    Input : s = "aabbcc"
+        k = 2 
+Output : 6
+The substrings are aa, bb, cc,
+aabb, bbcc and aabbcc.
+
+Input : s = "aabccc"
+        k = 2
+Output : 3
+There are three substrings aa, 
+cc and cc
+
+my own code - 
+    function countCompleteSubstrings(word, k) {
+    let itr = k
+    let mlt = 2;
+    let arr = word.split("");
+    let strArr = 0
+    while (k <= arr.length) {
+        for (let i = 0; i < arr.length; i++) {
+            let s = i + k
+            let mp = new Map();
+            for (j = i; j < s; j++) {
+                let val = mp.get(arr[j]) ? mp.get(arr[j]) + 1 : 1;
+                if (val > itr) {
+                    mp.clear()
+                    break;
+                } else {
+                    mp.set(arr[j], val)
+                }
+            }
+            let final = Array.from(mp).find((it) => it[1] != itr)
+            if (!final&&!mp.get(undefined)&&mp.size) {
+                strArr = strArr + 1
+            }
+        }
+        k = itr * mlt;
+        mlt = mlt + 1
+    }
+    return strArr
+}
