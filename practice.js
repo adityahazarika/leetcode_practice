@@ -394,3 +394,54 @@ my own code -
     }
     return strArr
 }
+
+same question with just one additional case of -
+    The difference between two adjacent characters is at most 2. That is, for any two adjacent characters c1 and c2 in s, the absolute difference in their positions in the alphabet is at most 2.
+
+solution - 
+    function countCompleteSubstrings(word, k) {
+    let itr = k
+    let mlt = 2;
+    let arr = word.split("");
+    let strArr = 0
+    while (k <= arr.length) {
+        for (let i = 0; i < arr.length; i++) {
+            let s = i + k
+            let mp = new Map();
+            for (j = i; j < s; j++) {
+                let val = mp.get(arr[j]) ? mp.get(arr[j]) + 1 : 1;
+                if (val > itr) {
+                    mp.clear()
+                    break;
+                } else {
+                    mp.set(arr[j], val)
+                }
+            }
+            let mapArr = Array.from(mp)
+            let final = mapArr.find((it, n) => it[1] != itr)
+
+            if (!final && !mp.get(undefined) && mp.size && check(mapArr)) {
+                strArr = strArr + 1
+            }
+        }
+        k = itr * mlt;
+        mlt = mlt + 1
+    }
+    return strArr
+}
+
+function check(mapArr) {
+    for (let t = 0; t < mapArr.length; t++) {
+        if (t == mapArr.length - 1) {
+            return true;
+        }
+        let a = mapArr[t][0].charCodeAt(0);
+        let b = mapArr[t + 1][0]?.charCodeAt(0);
+        if (!b) {
+            return true
+        }
+        else if (Math.abs(a - b) > 2) {
+            return false;
+        }
+    }
+}
