@@ -347,7 +347,7 @@ console.log(arr)
 console.log(arr)
 
 
-Q9 Find the 2nd largest number in an array 
+Q20 Find the 2nd largest number in an array 
 let arr = [1,4,5,6,9];
 
 let max = 0;
@@ -364,3 +364,24 @@ for (let i = 0; i < arr.length; i++) {
 }
 
 console.log(max,max2)
+
+Q21 state the output
+console.log(1);
+setTimeout(() => {
+  console.log(2);
+});
+Promise.resolve().then(() => {
+  console.log(3);
+});
+Promise.resolve().then(() => {
+  setTimeout(() => {
+    console.log(4);
+  });
+});
+Promise.resolve().then(() => {
+  console.log(5);
+});
+setTimeout(() => {
+  console.log(6);
+});
+console.log(7);
