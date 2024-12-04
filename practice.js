@@ -445,3 +445,49 @@ function check(mapArr) {
         }
     }
 }
+
+
+Q12 Given two strings s and t of lengths m and n respectively, return the minimum window 
+substring
+ of s such that every character in t (including duplicates) is included in the window. If there is no such substring, return the empty string "".
+
+The testcases will be generated such that the answer is unique.
+     
+Input: s = "ADOBECODEBANC", t = "ABC"
+Output: "BANC"
+Explanation: The minimum window substring "BANC" includes 'A', 'B', and 'C' from string t.
+
+    Solution - 
+var minWindow = function (s, t) {
+  if (t.length > s.length) {
+    return ""
+  } else {
+    let len = 0;
+    let substr = "";
+    let str = t.split("");
+    let subarr = [];
+    for (const c in s) {
+      let i = str.indexOf(s[c]);
+      if (i != -1) {
+        str.splice(i, 1)
+        subarr.push([s[c], Number(c)])
+      } else {
+        let j = subarr.findIndex((it) => it[0] == s[c])
+        if (j != -1) {
+          subarr.splice(j, 1);
+          subarr.push([s[c], Number(c)])
+        }
+      }
+      if (subarr.length == t.length) {
+        let dif = Number(subarr[subarr.length - 1][1]) - Number(subarr[0][1])
+        if (len == 0 || len > dif) {
+          len = dif
+          substr = s.slice(Number(subarr[0][1]), Number(subarr[subarr.length - 1][1] + 1))
+        }
+      }
+    }
+    return substr;
+  }
+};
+
+console.log(minWindow('aaaaab', 'aab'))
