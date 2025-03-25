@@ -491,3 +491,29 @@ var minWindow = function (s, t) {
 };
 
 console.log(minWindow('aaaaab', 'aab'))
+
+Q13 Find maximum (or minimum) sum of a subarray of size k
+
+function slidingWindow(arr, k) { //Best optimized O(n) solution
+    let = [1, 4, 2, 10, 23, 3, 1, 0, 20];
+    let l = 0;
+    let r = 0;
+    let sum = 0;
+    let temp = 0
+    for (let i = 0; i < arr.length; i++) {
+        temp = temp+arr[i]
+        if (r - l == (k - 1)) {
+            temp = temp-(arr[l-1]?arr[l-1]:0);
+            if(temp>sum){
+                sum = temp;
+            }
+            r = r+1;
+            l = l+1;
+        }else{
+            r=r+1;
+        }
+    }
+    console.log(sum,l,r)
+}
+
+sw([11,2,4,6,2,2,7,8,4,2],2)
