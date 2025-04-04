@@ -23,3 +23,22 @@ var sortArray = function(nums) {
     }
     return nums
 };
+
+// Selection Sort
+function sortArr(arr) {
+    let sort = [];
+    let len = arr.length;
+    while (sort.length != len) {
+        let m = arr[0]
+        for (let i = 0; i < arr.length; i++) {
+            m = Math.min(arr[i], m)
+            if (arr.length - 1 == i) {
+                sort.push(m)
+                arr.splice(arr.indexOf(m), 1)
+            }
+        }
+    }
+    return sort
+}
+
+console.log(sortArr([7, 5, 4, 3, 2, 1]))
