@@ -27,6 +27,8 @@ console.log(res,sum)
 ```
 
 
+
+
 ### 2. Given an array of positive numbers and a positive number K, find the maximum sum of any contiguous subarray of size K.
 
 ```
