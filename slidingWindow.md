@@ -25,9 +25,7 @@ while (r != arr.length) {
 }
 console.log(res,sum)
 ```
-
-
-
+<br>
 
 ### 2. Given an array of positive numbers and a positive number K, find the maximum sum of any contiguous subarray of size K.
 
