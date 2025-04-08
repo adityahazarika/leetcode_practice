@@ -2,7 +2,8 @@
 
 ### 1. Given an array, find the average of all contiguous subarrays of size K in it.
    
-```let arr = [1, 3, 2, 6, -1, 4, 1, 8, 2]
+```
+let arr = [1, 3, 2, 6, -1, 4, 1, 8, 2]
 let K = 5
 let l = 0;
 let r = 1;
