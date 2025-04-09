@@ -67,7 +67,6 @@ console.log(maxSubarrayOfSizeK(arr,K))
 ```
 function smallestSubarrayWithGivenSum(arr, s) {
     let l = 0;
-    // let r = 0;
     let sum = 0;
     let len = 0
     for (let i = 0; i < arr.length; i++) {
