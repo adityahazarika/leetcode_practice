@@ -60,3 +60,28 @@ function maxSubarrayOfSizeK(arr, K) {
 
 console.log(maxSubarrayOfSizeK(arr,K))
 ```
+<br>
+### 3.Given an array of positive numbers and a positive number S, find the length of the smallest contiguous subarray whose sum is greater than or equal to S
+
+```
+function minSubArrayLen(target, nums) {
+    let l = 0;
+    let sum = 0;
+    let len = 0
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] >= target) {
+            return 1
+        }
+        sum = sum + nums[i]
+        while (sum >= target) {
+            let temp = (i - l) + 1
+            if (len == 0 || temp < len) {
+                len = temp
+            }
+            sum = sum - nums[l];
+            l = l + 1
+        }
+    }
+    return len
+}
+```
