@@ -105,6 +105,7 @@ console.log(smallestSubarrayWithGivenSum([3, 4, 1, 1, 6], 8))//3
 
 leetcode link - https://leetcode.com/problems/maximum-sum-of-distinct-subarrays-with-length-k/description/
 
+The following is my own raw solution
 ```
 var maximumSubarraySum = function (nums, k) {
     let l = 0;
