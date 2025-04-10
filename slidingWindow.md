@@ -98,3 +98,44 @@ console.log(smallestSubarrayWithGivenSum([2,1, 5, 2, 3, 2], 7))
 console.log(smallestSubarrayWithGivenSum([2, 1, 5, 2, 8], 7))//1
 console.log(smallestSubarrayWithGivenSum([3, 4, 1, 1, 6], 8))//3
 ```
+
+<br>
+
+### 3.You are given an integer array nums and an integer k. Find the maximum subarray sum of all the subarrays of nums that meet the following conditions: The length of the subarray is k, and All the elements of the subarray are distinct. Return the maximum subarray sum of all the subarrays that meet the conditions. If no subarray meets the conditions, return 0.
+
+leetcode link - https://leetcode.com/problems/maximum-sum-of-distinct-subarrays-with-length-k/description/
+
+```
+var maximumSubarraySum = function (nums, k) {
+    let l = 0;
+    let sum = 0;
+    let max = 0;
+    let subArr = new Map()
+    for (let i = 0; i < nums.length; i++) {
+        sum = sum + nums[i];
+        subArr.set(nums[i], subArr.has(nums[i]) ? subArr.get(nums[i]) + 1 : 1);
+
+        if (i - l == (k - 1)) {
+            if (subArr.size != k) {
+                if (subArr.get(nums[l]) == 1) {
+                    subArr.delete(nums[l])
+                } else {
+                    subArr.set(nums[l], subArr.get(nums[l]) - 1)
+                }
+            }
+            if (subArr.size == k) {
+                if(max<sum){
+                    max = sum;
+                }
+                subArr.delete(nums[l])
+            }
+
+            sum = sum - nums[l]
+            l = l + 1
+        }
+    }
+    return max
+};
+```
+
+
