@@ -101,7 +101,7 @@ console.log(smallestSubarrayWithGivenSum([3, 4, 1, 1, 6], 8))//3
 
 <br>
 
-### 3.You are given an integer array nums and an integer k. Find the maximum subarray sum of all the subarrays of nums that meet the following conditions: The length of the subarray is k, and All the elements of the subarray are distinct. Return the maximum subarray sum of all the subarrays that meet the conditions. If no subarray meets the conditions, return 0.
+### 4. You are given an integer array nums and an integer k. Find the maximum subarray sum of all the subarrays of nums that meet the following conditions: The length of the subarray is k, and All the elements of the subarray are distinct. Return the maximum subarray sum of all the subarrays that meet the conditions. If no subarray meets the conditions, return 0.
 
 leetcode link - https://leetcode.com/problems/maximum-sum-of-distinct-subarrays-with-length-k/description/
 
@@ -140,7 +140,7 @@ var maximumSubarraySum = function (nums, k) {
 ```
 <br>
 
-### 4. Fruits into Baskets. In this problem, we need to find the length of the longest subarray with no more than two distinct characters (or fruit types!).
+### 5. Fruits into Baskets. In this problem, we need to find the length of the longest subarray with no more than two distinct characters (or fruit types!).
 
 leetcode link - https://leetcode.com/problems/fruit-into-baskets/description/
 
