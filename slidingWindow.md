@@ -138,5 +138,45 @@ var maximumSubarraySum = function (nums, k) {
     return max
 };
 ```
+<br>
+
+### 4. Fruits into Baskets. In this problem, we need to find the length of the longest subarray with no more than two distinct characters (or fruit types!).
+
+leetcode link - https://leetcode.com/problems/fruit-into-baskets/description/
+
+The following is my own raw solution
+
+```
+var totalFruit = function (fruits) {
+    let l = 0
+    let max = 0;
+    let mp = new Map();
+
+    for (let i = 0; i < fruits.length; i++) {
+
+        mp.set(fruits[i], mp.has(fruits[i]) ? mp.get(fruits[i]) + 1 : 1)
+        if (mp.size > 2) {
+            let temp = i - l;
+            if (temp > max) {
+                max = temp
+            }
+            while (mp.size > 2) {
+                mp.set(fruits[l], mp.get(fruits[l]) - 1);
+                if (mp.get(fruits[l]) == 0) {
+                    mp.delete(fruits[l])
+                }
+                l = l + 1
+            }
+        }
+    }
+    let temp = fruits.length - l;
+    if (temp > max) {
+        max = temp
+    }
+    return max
+}
+```
+
+
 
 
