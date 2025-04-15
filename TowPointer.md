@@ -41,3 +41,32 @@ var twoSum = function (nums, target) {
     return [str,end]
 };
 ```
+
+### 2. Given an array of sorted numbers, remove all duplicates from it. You should not use any extra space; after removing the duplicates in-place return the length of the subarray that has no duplicate in it.
+
+leetcode link - https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/
+
+```
+var removeDuplicates = function (nums) {
+    let set = new Set();
+    for (let i = 0; i < nums.length; i++) {
+        if (set.has(nums[i])) {
+            nums[i] = "_"
+        } else {
+            set.add(nums[i])
+        }
+    }
+    let l = null;
+    for (let i = 0; i < nums.length; i++) {
+        if (l == null && nums[i] == "_") {
+            l = i
+        }
+        if (l != null && nums[i] != "_") {
+            nums[l] = nums[i];
+            nums[i] = "_";
+            l = l + 1
+        }
+    }
+    return set.size
+};
+```
