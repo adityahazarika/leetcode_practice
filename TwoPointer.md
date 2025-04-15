@@ -48,6 +48,7 @@ var twoSum = function (nums, target) {
 leetcode link - https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/
 
 ```
+//my raw solution
 var removeDuplicates = function (nums) {
     let set = new Set();
     for (let i = 0; i < nums.length; i++) {
@@ -70,4 +71,22 @@ var removeDuplicates = function (nums) {
     }
     return set.size
 };
+```
+
+A little more optimized version by me only
+```
+var removeDuplicates = function (nums) {
+    let l = 0;
+    let nextToNonDup = 1
+    while (nextToNonDup != nums.length) {
+        if (nums[nextToNonDup] !== nums[l]) {
+            l = l + 1
+            let temp = nums[l];
+            nums[l] = nums[nextToNonDup];
+            nums[nextToNonDup] = temp
+        }
+        nextToNonDup = nextToNonDup + 1
+    }
+    return l+1
+}
 ```
