@@ -90,3 +90,48 @@ var removeDuplicates = function (nums) {
     return l+1
 }
 ```
+
+
+
+
+### 3. Given an array of unsorted numbers, find all unique triplets in it that add up to zero.
+
+leetcode link - https://leetcode.com/problems/3sum/
+
+```
+function threeSum(arr) {
+    let nums = arr.sort((a, b) => a - b)
+    let triplets = [];
+    for (let i = 0; i < nums.length; i++) {
+        if(nums[i]==nums[i-1]){
+            continue
+        }
+        searchForTriplet(i + 1, nums, nums[i],triplets)
+    }
+    return triplets
+}
+
+function searchForTriplet(start, nums, int, triplets) {
+    let toFind = 0 - int;
+    let end = nums.length - 1
+    while (start < end) {
+        let a = nums[start];
+        let b = nums[end]
+        if (a + b == toFind) {
+            triplets.push([int, a, b])
+            start = start + 1;
+            end = end - 1;
+            while (nums[start] == nums[start - 1]) {
+                start = start + 1
+            }
+            while (nums[end] == nums[end + 1]) {
+                end = end - 1;
+            }
+        } else if (a + b > toFind) {
+            end = end - 1
+        } else if (a + b < toFind) {
+            start = start + 1
+        }
+    }
+}
+```
