@@ -45,3 +45,35 @@ function missingNumber(nums) {
     return num
 }
 ```
+
+### 3. Find all Duplicate Numbers. Given an integer array nums of length n where all the integers of nums are in the range [1, n] and each integer appears at most twice, return an array of all the integers that appears twice. You must write an algorithm that runs in O(n) time and uses only constant auxiliary space, excluding the space needed to store the output.
+Leetcode link - https://leetcode.com/problems/find-all-duplicates-in-an-array/description/
+
+```
+function findDuplicates(nums) {
+  let i = 0;
+
+  while (i < nums.length) {
+    //??
+    let j = nums[i] - 1;
+
+    if (nums[i] !== nums[j]) {
+      //swap
+      [nums[i], nums[j]] = [nums[j], nums[i]];
+    } else {
+      i++;
+    }
+  }
+
+  let duplicateNumbers = [];
+
+  for (i = 0; i < nums.length; i++) {
+    if (nums[i] !== i + 1) {
+      //we have found the duplicate
+      duplicateNumbers.push(nums[i]);
+    }
+  }
+
+  return duplicateNumbers;
+}
+```
