@@ -24,6 +24,26 @@ while (r != arr.length) {
     l = l + 1
 }
 console.log(res,sum)
+
+
+//A more clean and optimized solution by me only -
+
+let a = [1, 3, 2, 6, -1, 4, 1, 8, 2]
+let k = 5;
+let result = []
+let sum = 0;
+for (let i = 0; i < a.length; i++) {
+  sum = sum+a[i]
+  if(i<(k-1)){
+    continue;
+  }
+  result.push(sum/k)
+  sum = sum-a[i-(k-1)]
+
+}
+
+console.log(result)
+
 ```
 <br>
 
