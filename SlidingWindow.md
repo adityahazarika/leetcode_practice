@@ -79,6 +79,29 @@ function maxSubarrayOfSizeK(arr, K) {
 }
 
 console.log(maxSubarrayOfSizeK(arr,K))
+
+
+A more optimized version, by me only
+
+let arr = [2,9, 3, 4, 1, 5]
+let K = 3
+let sum = 0
+let max = 0;
+let res = []
+
+for (let i = 0; i < arr.length; i++) {
+  sum = sum+arr[i];
+  if(i<(K-1)){
+    continue;
+  }
+  if(sum>max){
+    max = sum;
+  }
+  res.push(sum)
+  sum = sum - arr[i-(K-1)]
+}
+
+console.log(res,max)
 ```
 <br>
 
